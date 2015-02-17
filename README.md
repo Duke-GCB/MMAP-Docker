@@ -18,6 +18,7 @@ To-Do
 
 - Extract the orchestration from the data processing in the python code, and containerize the processing, so that the orchestration could be run under something like galaxy.
 - Abstract the specific tool interface to things like assembler, making modularity possible.
+- Put it all together
 
 Usage notes
 -----------
