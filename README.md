@@ -24,16 +24,16 @@ Usage notes
 
 In general, binaries are installed and available in path, can be run as:
 
-`docker run dleehr/genovo assemble ...`
-`docker run dleehr/genovo finalize ...`
-`docker run dleehr/glimmer glimmer3 ...`
+    docker run dleehr/genovo assemble <args>
+    docker run dleehr/genovo finalize <args>
+    docker run dleehr/glimmer glimmer3 <args>
 
 The mine image incorporates a shell script to wrap the jar file:
 
-`docker run dleehr/mine mine.sh ...`
+    docker run dleehr/mine mine.sh <args>
 
 And the go-blast image has the GO sequence data as a protein database: `/blastdb/go-seqdb`:
 
-`docker run -v /Users/dcl9/Code/python/MMAP/data:/input dleehr/go-blast blastx -db /blastdb/go-seqdb -query /input/AE014075_subTiny5.fasta`
+    docker run -v /Users/dcl9/Code/python/MMAP/data:/input dleehr/go-blast blastx -db /blastdb/go-seqdb -query /input/AE014075_subTiny5.fasta
 
-Note that to pass files as arguments, the files must be on a volume that is mounted
+Note that to pass files as arguments, the files must be on a volume, e.g. one that is shared from the host.
