@@ -1,7 +1,7 @@
 Dockerfiles for MMAP
 ====================
 
-This directory contains [http://docker.com](Docker) files for containerizing the components of the MMAP analysis pipeline. It is a work-in-progress, as an effort to make the operation modular and scalable, taking cues from [bioboxes](https://github.com/bioboxes).
+This directory contains [Docker](http://docker.com) files for containerizing the components of the MMAP analysis pipeline. It is a work-in-progress, as an effort to make the operation modular and scalable, taking cues from [bioboxes](https://github.com/bioboxes).
 
 Working
 -------
