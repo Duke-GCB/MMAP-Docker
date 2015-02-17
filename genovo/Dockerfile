@@ -1,5 +1,8 @@
 # Genovo container
-# genovo-base
+# Puts genovo 'assemble' and 'finalize' binaries in path.
+# Initial prototype for containerizing Genovo, but the assembler should conform to
+# A standardized interface (e.g. https://github.com/bioboxes or http://nucleotid.es)
+
 FROM phusion/baseimage
 MAINTAINER Dan Leehr <dan.leehr@duke.edu>
 
