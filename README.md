@@ -34,6 +34,8 @@ The mine image incorporates a shell script to wrap the jar file:
 
 And the go-blast image has the GO sequence data as a protein database: `/blastdb/go-seqdb`:
 
-    docker run -v /Users/dcl9/Code/python/MMAP/data:/input dleehr/go-blast blastx -db /blastdb/go-seqdb -query /input/AE014075_subTiny5.fasta
+    docker run -v /Users/dcl9/Code/python/MMAP/data:/input \
+      dleehr/go-blast blastx -db /blastdb/go-seqdb \
+      -query /input/AE014075_subTiny5.fasta
 
 Note that to pass files as arguments, the files must be on a volume, e.g. one that is shared from the host.
