@@ -1,0 +1,18 @@
+# Genovo container
+# genovo-base
+FROM phusion/baseimage
+MAINTAINER Dan Leehr <dan.leehr@duke.edu>
+
+# Install required libraries
+RUN apt-get update && apt-get install -y \
+  libgsl0ldbl
+
+# Get genovo
+ENV GENOVO_VERSION 0.4
+ENV GENOVO_DIR /opt/genovo/
+RUN mkdir -p $GENOVO_DIR
+RUN curl -SL http://cs.stanford.edu/group/genovo/genovo_binaries_$GENOVO_VERSION.tar.gz | tar -xzC $GENOVO_DIR
+
+# Add assemble and finalize to path
+ENV PATH $GENOVO_DIR:$PATH
+
