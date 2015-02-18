@@ -11,7 +11,8 @@ So far, we have containers created for
 - [Genovo](genovo)
 - [Glimmer](glimmer)
 - [MINE](mine)
-- [GO sequence data & NCBI BLAST+](go-blast)
+- [NCBI BLAST+](blast)
+- [Converting GO seqdb to blastdb](makeblastdb-go)
 
 To-Do
 -----
