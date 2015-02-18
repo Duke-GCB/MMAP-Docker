@@ -1,5 +1,4 @@
-# BLAST+ container for gene ontology data
-# Creates an NCBI BLAST+ database called go-seqdb in /blastdb
+# Container to create BLAST+ database from Gene Ontology fasta file
 # Initial prototype for containerizing, but the gene identifier should conform to
 # A standardized interface (e.g. https://github.com/bioboxes or http://nucleotid.es)
 FROM phusion/baseimage
