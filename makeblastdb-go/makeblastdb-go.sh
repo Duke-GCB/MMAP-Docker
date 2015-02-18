@@ -25,7 +25,12 @@ curl -SL -o /tmp/go-seqdb.fasta.gz $GO_SEQDB_URL
 gunzip /tmp/go-seqdb.fasta.gz
 
 # Make the database
-makeblastdb -in /tmp/go-seqdb.fasta -dbtype prot -parse_seqids -out $BLASTDB/go-seqdb
+makeblastdb \
+  -in /tmp/go-seqdb.fasta \
+  -out $BLASTDB/go-seqdb \
+  -dbtype prot \
+  -parse_seqids \
+  -title go_seqdb
 
 # Cleanup
 rm /tmp/go-seqdb.fasta
