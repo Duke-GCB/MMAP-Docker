@@ -28,6 +28,7 @@ set -e
 [ ! -r "$CONT_INPUT_BLAST_DB.pin" ] && echo "Error: BLAST DB at $CONT_INPUT_BLAST_DB does not exist or cannot be read" && exit 1
 
 # Check that output file does not exist
+# These break if there are spaces
 [ -e "$CONT_OUTPUT_BLAST_RESULTS" ] && echo "Error: output file at $CONT_OUTPUT_BLAST_RESULTS already exists" && exit 1
 
 # Check that output file is writable
@@ -35,7 +36,7 @@ set -e
 
 # Variables are valid, now run blast
 BLAST_BIN=`which blastx`
-
+BLAST_DBCMD=`which blastdbcmd`
 # BLAST format 10 means csv. std is the set of standard fields, and stitle
 # causes the subject titles to be included, which contain the GO terms.
 BLAST_OUTFMT="10 std stitle"
@@ -46,12 +47,14 @@ if [ ! -z "$CONT_BLAST_EVALUE" ]; then
   BLAST_EVALUE=$CONT_BLAST_EVALUE
 fi
 
-# TODO: print database version
-
 CMD="$BLAST_BIN -db $CONT_INPUT_BLAST_DB -query $CONT_INPUT_ORFS_FILE -out $CONT_OUTPUT_BLAST_RESULTS -evalue \"$BLAST_EVALUE\" -outfmt '$BLAST_OUTFMT'"
 
-echo "Starting go-blast..."
-echo "BLAST Version: $($BLAST_BIN -version)"
+echo
+echo "Starting $0..."
+echo "$($BLAST_BIN -version)"
+echo "$($BLAST_DBCMD -db $CONT_INPUT_BLAST_DB -info)"
+echo "Command:"
 echo "$CMD"
+echo
 
 sh -c "$CMD"
