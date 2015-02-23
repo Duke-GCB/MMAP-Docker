@@ -34,7 +34,6 @@ set -e
 [ ! -w $(dirname "$CONT_OUTPUT_BLAST_RESULTS") ] && echo "Error: output file $CONT_OUTPUT_BLAST_RESULTS is not writable" && exit 1
 
 # Variables are valid, now run blast
-
 BLAST_BIN=`which blastx`
 
 # BLAST format 10 means csv. std is the set of standard fields, and stitle
@@ -47,7 +46,12 @@ if [ ! -z "$CONT_BLAST_EVALUE" ]; then
   BLAST_EVALUE=$CONT_BLAST_EVALUE
 fi
 
-## TODO: Print versions, variables
-echo "Using evalue $BLAST_EVALUE"
+# TODO: print database version
 
-"$BLAST_BIN" -db "$CONT_INPUT_BLAST_DB" -query "$CONT_INPUT_ORFS_FILE" -out "$CONT_OUTPUT_BLAST_RESULTS" -evalue "\"$BLAST_EVALUE\"" -outfmt "'$BLAST_OUTFMT'"
+CMD="$BLAST_BIN -db $CONT_INPUT_BLAST_DB -query $CONT_INPUT_ORFS_FILE -out $CONT_OUTPUT_BLAST_RESULTS -evalue \"$BLAST_EVALUE\" -outfmt '$BLAST_OUTFMT'"
+
+echo "Starting go-blast..."
+echo "BLAST Version: $($BLAST_BIN -version)"
+echo "$CMD"
+
+sh -c "$CMD"
