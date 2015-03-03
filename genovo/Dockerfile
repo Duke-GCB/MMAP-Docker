@@ -12,7 +12,7 @@ RUN apt-get update && apt-get install -y \
 
 # Get genovo
 ENV GENOVO_VERSION 0.4
-ENV GENOVO_DIR /opt/genovo/
+ENV GENOVO_DIR /opt/genovo
 RUN mkdir -p $GENOVO_DIR
 RUN curl -SL http://cs.stanford.edu/group/genovo/genovo_binaries_$GENOVO_VERSION.tar.gz | tar -xzC $GENOVO_DIR
 
