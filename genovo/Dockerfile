@@ -19,3 +19,6 @@ RUN curl -SL http://cs.stanford.edu/group/genovo/genovo_binaries_$GENOVO_VERSION
 # Add assemble and finalize to path
 ENV PATH $GENOVO_DIR:$PATH
 
+COPY genovo.sh /usr/bin/genovo.sh
+
+CMD ["/usr/bin/genovo.sh"]
