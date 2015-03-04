@@ -58,9 +58,10 @@ GENOVO_VERSION=`head -n 1 $(dirname $ASSEMBLE_BIN)/MANUAL`
 echo
 echo "Starting $0..."
 echo "$GENOVO_VERSION" # Manual is out of date and reports 0.3 for 0.4
-echo "Commands:"
+echo "Running assemble:"
 echo "$ASSEMBLE_CMD"
-echo "$FINALIZE_CMD"
-echo
+sh -c "$ASSEMBLE_CMD"
 
-sh -c "$ASSEMBLE_CMD" && sh -c "$FINALIZE_CMD"
+echo "Running finalize:"
+echo "$FINALIZE_CMD"
+sh -c "$FINALIZE_CMD"
