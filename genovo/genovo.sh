@@ -47,12 +47,17 @@ if [ ! -z "$CONT_INPUT_FINALIZE_CUTOFF" ]; then
   FINALIZE_CUTOFF=$CONT_INPUT_FINALIZE_CUTOFF
 fi
 
-# Intermediate file must be in writable directory
-# Could be temporary
-DUMP_FILE=$CONT_OUTPUT_CONTIGS_FILE.dump
+# assemble writes files to the same directory as the input file
+# Since the input directory is mounted read-only, we have to symlink that
+# file into a writable directory and use the symlink with assemble
+WORKDIR=`mktemp -d`
+ln -s $CONT_INPUT_READS_FILE $WORKDIR
+WORKDIR_READS_FILE=$WORKDIR/$(basename $CONT_INPUT_READS_FILE)
+# assemble writes a .dump.best file in the workdir
+WORKDIR_DUMP_FILE=$WORKDIR_READS_FILE.dump.best
 
-ASSEMBLE_CMD="$ASSEMBLE_BIN $CONT_INPUT_READS_FILE $ASSEMBLE_ITERATIONS $DUMP_FILE"
-FINALIZE_CMD="$FINALIZE_BIN $FINALIZE_CUTOFF $CONT_OUTPUT_CONTIGS_FILE $DUMP_FILE"
+ASSEMBLE_CMD="$ASSEMBLE_BIN $WORKDIR_READS_FILE $ASSEMBLE_ITERATIONS"
+FINALIZE_CMD="$FINALIZE_BIN $FINALIZE_CUTOFF $CONT_OUTPUT_CONTIGS_FILE $WORKDIR_DUMP_FILE"
 GENOVO_VERSION=`head -n 1 $(dirname $ASSEMBLE_BIN)/MANUAL`
 
 echo
