@@ -1,7 +1,7 @@
 Dockerfiles for MMAP
 ====================
 
-This directory contains Dockerfiles for building [Docker](http://docker.com) images, encapsulating steps of the MMAP analysis pipeline into containers.
+This directory contains Dockerfiles for building [Docker](http://docker.com) images, encapsulating steps of the [MMAP](https://github.com/Duke-GCB/MMAP) analysis pipeline into containers.
 
 Each image implements a step in the pipeline, and should be treated as a single command. Parameters are sent to the containers by setting environment variables, taking cues from [bioboxes](https://github.com/bioboxes).
 
