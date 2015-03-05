@@ -8,7 +8,8 @@ MAINTAINER Dan Leehr <dan.leehr@duke.edu>
 # Install required libraries
 RUN apt-get update && apt-get install -y \
   build-essential \
-  csh
+  csh \
+  python
 
 # Get Glimmer
 ENV GLIMMER_VERSION 302b
@@ -52,6 +53,9 @@ RUN sed -i "s|/nfshomes/adelcher/bin/elph|${ELPH_DIR}/bin/elph|g" $GLIMMER_DIR/$
 
 # Update awk paths in awk scripts
 RUN sed -i "s|/bin/awk|/usr/bin/awk|g" $GLIMMER_DIR/$GLIMMER_SUBDIR/scripts/*.awk
+
+# Python script is used to number lines in the fasta file
+COPY number_orfs.py /usr/bin/number_orfs.py
 
 # Place wrapper script
 COPY glimmer.sh /usr/bin/glimmer.sh
