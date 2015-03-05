@@ -1,1 +1,0 @@
-../../src/core/go_blast/extract_go_terms.py
