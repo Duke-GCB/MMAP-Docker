@@ -30,7 +30,7 @@ makeblastdb \
   -out $BLASTDB/go-seqdb \
   -dbtype prot \
   -parse_seqids \
-  -title go_seqdb
+  -title go-seqdb
 
 # Cleanup
 rm /tmp/go-seqdb.fasta
