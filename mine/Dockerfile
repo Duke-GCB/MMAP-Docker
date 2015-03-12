@@ -21,7 +21,9 @@ RUN curl -SL -o $MINE_DIR/MINE.jar http://www.exploredata.net/ftp/MINE.jar
 
 # Copy wrapper script
 
-COPY mine.sh $MINE_DIR/mine.sh
+COPY mine.sh /usr/bin/mine.sh
 
 # Add to path
 ENV PATH $MINE_DIR:$PATH
+
+CMD ["/usr/bin/mine.sh"]
