@@ -76,3 +76,5 @@ echo "Starting $0..."
 echo "$MINE_VERSION"
 echo "$MINE_CMD"
 sh -c "$MINE_CMD"
+
+mv "$WORKDIR_RESULTS_CSV_FILE" "$CONT_OUTPUT_RESULTS_CSV_FILE"
