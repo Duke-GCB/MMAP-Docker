@@ -13,11 +13,12 @@ Images
 - [go-blast](go-blast) - [NCBI BLAST+](http://blast.ncbi.nlm.nih.gov/Blast.cgi?PAGE_TYPE=BlastDocs&DOC_TYPE=Download)  configured to use a local BLAST database containing Gene Ontology terms
 - [makeblastdb-go](makeblastdb-go) - Downloads GO annotated sequences from archive.geneontology.org and converts sequence to an NCBI BLAST+ compatible format.
 - [extract-go-terms](extract-go-terms) - Simple python script that counts/extracts the GO terms from the go-blast results
+- [mine](mine) - [MINE - maximal information-based nonparametric exploration](http://www.exploredata.net/Downloads/MINE-Application)
 
 To-Do
 -----
 
-- Wrapper script for [mine](mine)
+- CSV merging - preprocessing for [mine](mine)
 
 Usage notes
 -----------
