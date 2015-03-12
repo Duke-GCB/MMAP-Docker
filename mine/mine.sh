@@ -25,15 +25,15 @@ set -e
 
 # Check that output file does not exist
 # These break if there are spaces
-[ -e "$CONT_OUTPUT_CSV_FILE" ] && echo "Error: output file at $CONT_OUTPUT_CSV_FILE already exists" && exit 1
+[ -e "$CONT_OUTPUT_RESULTS_CSV_FILE" ] && echo "Error: output file at $CONT_OUTPUT_RESULTS_CSV_FILE already exists" && exit 1
 
 # Check that output file is writable
 [ ! -w $(dirname "$CONT_OUTPUT_RESULTS_CSV_FILE") ] && echo "Error: output file $CONT_OUTPUT_RESULTS_CSV_FILE is not writable" && exit 1
 
 
-JAVA_BIN = `which java`
-MINE_JAR = $MINE_DIR/MINE.jar
-JAVA_OPTS = "-Xmx1024m"
+JAVA_BIN=`which java`
+MINE_JAR=$MINE_DIR/MINE.jar
+JAVA_OPTS="-Xmx1024m"
 COMPARE_STYLE="-allPairs"
 CV="0.0"
 EXP="0.6"
@@ -65,10 +65,10 @@ WORKDIR=`mktemp -d`
 ln -s $CONT_INPUT_CSV_FILE $WORKDIR
 WORKDIR_INPUT_CSV_FILE=$WORKDIR/$(basename $CONT_INPUT_CSV_FILE)
 # MINE writes a Results.csv and Status.txt file in the workdir
-WORKDIR_RESULTS_CSV_FILE=$WORKDIR/Results.csv
-WORKDIR_STATUS_FILE=$WORKDIR/Status.txt
+WORKDIR_RESULTS_CSV_FILE=$WORKDIR_INPUT_CSV_FILE,$JOBID,Results.csv
+WORKDIR_STATUS_FILE=$WORKDIR_INPUT_CSV_FILE,$JOBID,Status.txt
 
-MINE_CMD="$JAVA_BIN $JAVA_OPTS -jar $MINE_JAR $CONT_INPUT_CSV_FILE $COMPARE_STYLE cv=$CV exp=$EXP c=$CLUMPS $JOBID"
+MINE_CMD="$JAVA_BIN $JAVA_OPTS -jar $MINE_JAR $WORKDIR_INPUT_CSV_FILE $COMPARE_STYLE cv=$CV exp=$EXP c=$CLUMPS id=$JOBID"
 MINE_VERSION=$(cat $MINE_DIR/VERSION)
 
 echo
