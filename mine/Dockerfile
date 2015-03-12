@@ -9,9 +9,14 @@ MAINTAINER Dan Leehr <dan.leehr@duke.edu>
 RUN apt-get update && apt-get install -y \
   openjdk-7-jre-headless
 
+
 # Get MINE
-ENV MINE_DIR /opt/mine/
+ENV MINE_DIR /opt/mine
 RUN mkdir -p $MINE_DIR
+
+# Record mine version
+RUN curl http://www.exploredata.net/Downloads/MINE-Application | grep "MINE.jar" | sed 's|<[^>]*>||g' | sed 's|&nbsp;| |g' > $MINE_DIR/VERSION
+
 RUN curl -SL -o $MINE_DIR/MINE.jar http://www.exploredata.net/ftp/MINE.jar
 
 # Copy wrapper script
