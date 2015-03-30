@@ -8,6 +8,8 @@ Each image implements a step in the pipeline, and should be treated as a single 
 Images
 ----------
 
+See README.md in each subdirectory for further details.
+
 - [Genovo](genovo) - [Genovo](http://cs.stanford.edu/group/genovo/) assembler
 - [Glimmer](glimmer) - [Glimmer](https://ccb.jhu.edu/software/glimmer/) gene finder
 - [go-blast](go-blast) - [NCBI BLAST+](http://blast.ncbi.nlm.nih.gov/Blast.cgi?PAGE_TYPE=BlastDocs&DOC_TYPE=Download)  configured to use a local BLAST database containing Gene Ontology terms
