@@ -16,4 +16,4 @@ Genovo binaries are installed in /opt. The image's default command, [genovo.sh](
 | CONT_INPUT_READS_FILE   | FASTA file containing reads to assemble | Input  | **Yes**   | |
 | CONT_OUTPUT_CONTIGS_FILE | Results file, to contain contigs | Output | **Yes** | |
 | CONT_INPUT_ASSEMBLE_ITERATIONS | The number of iterations to run when assembling | Parameter | No   | 10 |
-| CONT_INPUT_FINALIZE_CUTOFF | he minimum length to use when outputting assembled contig | Parameter | No   | 250 |
+| CONT_INPUT_FINALIZE_CUTOFF | The minimum length to use when outputting assembled contig | Parameter | No   | 250 |
