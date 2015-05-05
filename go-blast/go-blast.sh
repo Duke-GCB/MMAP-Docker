@@ -13,6 +13,7 @@ set -e
 # CONT_INPUT_ORFS_FILE - A file containing sequence ORFs to query
 # CONT_INPUT_BLAST_DB - The path to the blastdb to use, with no extension
 # CONT_BLAST_EVALUE - BLAST evalue, defaults to 1e-15
+# CONT_BLAST_SEG - BLAST seg filtering, defaults yes
 
 # OUTPUTS
 
@@ -41,13 +42,19 @@ BLAST_DBCMD=`which blastdbcmd`
 # causes the subject titles to be included, which contain the GO terms.
 BLAST_OUTFMT="10 std stitle"
 BLAST_EVALUE="1e-15"
+BLAST_SEG="yes"
 
 # If evalue provided to container, use it
 if [ ! -z "$CONT_BLAST_EVALUE" ]; then
   BLAST_EVALUE=$CONT_BLAST_EVALUE
 fi
 
-CMD="$BLAST_BIN -db $CONT_INPUT_BLAST_DB -query $CONT_INPUT_ORFS_FILE -out $CONT_OUTPUT_BLAST_RESULTS -evalue \"$BLAST_EVALUE\" -outfmt '$BLAST_OUTFMT'"
+# If seg provided to container, use it
+if [ ! -z "$CONT_BLAST_SEG" ]; then
+  BLAST_SEG=$CONT_BLAST_SEG
+fi
+
+CMD="$BLAST_BIN -db $CONT_INPUT_BLAST_DB -query $CONT_INPUT_ORFS_FILE -out $CONT_OUTPUT_BLAST_RESULTS -evalue \"$BLAST_EVALUE\" -seg \"$BLAST_SEG\" -outfmt '$BLAST_OUTFMT'"
 
 echo
 echo "Starting $0..."
