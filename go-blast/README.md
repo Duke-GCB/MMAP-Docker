@@ -16,6 +16,7 @@ blast+ is installed via apt-get. The image's default command, [go-blast.sh](go-b
 | CONT_INPUT_BLAST_DB | The path to the blastdb to use | Input | **Yes**   | |
 | CONT_OUTPUT_BLAST_RESULTS | Results file, in [BLAST CSV format](http://www.ncbi.nlm.nih.gov/books/NBK279675/) with subject titles (outfmt `10 std stitle`) | Output | **Yes** | |
 | CONT_BLAST_EVALUE | BLAST [evalue](http://blast.ncbi.nlm.nih.gov/Blast.cgi?CMD=Web&PAGE_TYPE=BlastDocs&DOC_TYPE=FAQ#expect) | Parameter | No   | 1e-15 |
+| CONT_BLAST_SEG | BLAST [seg](http://blast.ncbi.nlm.nih.gov/Blast.cgi?CMD=Web&PAGE_TYPE=BlastDocs&DOC_TYPE=FAQ#LCR) | Parameter | No   | yes |
 
 ## Notes
 
