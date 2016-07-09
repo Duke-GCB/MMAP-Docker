@@ -8,7 +8,10 @@ MAINTAINER Dan Leehr <dan.leehr@duke.edu>
 
 # Install required libraries
 RUN apt-get update && apt-get install -y \
-  libgsl0ldbl
+  libgsl2
+
+# Genovo linked to libgsl.so.0
+RUN ln -s /usr/lib/x86_64-linux-gnu/libgsl.so /usr/lib/x86_64-linux-gnu/libgsl.so.0
 
 # Get genovo
 ENV GENOVO_VERSION 0.4
