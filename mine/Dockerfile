@@ -7,7 +7,7 @@ MAINTAINER Dan Leehr <dan.leehr@duke.edu>
 
 # Install required libraries
 RUN apt-get update && apt-get install -y \
-  openjdk-7-jre-headless
+  openjdk-8-jre-headless
 
 
 # Get MINE
